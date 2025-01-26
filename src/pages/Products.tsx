@@ -50,18 +50,6 @@ const Products: FC = () => {
   return (
     <div className='w-[1150px] mx-auto'>
       <div className='bg-blue-100 p-5 mt-16 rounded-md shadow-xl mb-10'>
-        {/* Filtering UI */}
-        <div className='flex justify-between mb-8'>
-          <form className='flex flex-col'>
-            <label htmlFor='search'>Search Product</label>
-            <input
-              type='text'
-              id='search'
-              className='mt-2 rounded-md border-3 focus:outline-none py-1 px-3 shadow-md'
-            />
-          </form>
-          {/* Other Filters */}
-        </div>
         <div className='flex justify-between'>
           <form className='w-[120px] text-center p-1 border rounded-sm shadow-xs'>
             <h2 className='text-xs font-normal mb-1'>Price</h2>
