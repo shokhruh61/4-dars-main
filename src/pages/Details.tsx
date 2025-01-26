@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
-import headImage from '../images/headImage.jpg';
 
 const Details: FC = () => {
   const { id } = useParams();

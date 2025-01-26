@@ -1,6 +1,33 @@
-import { FC } from 'react'
-import headImage from '../images/headImage.jpg'
+import { FC, useEffect, useState } from 'react'
+import axios from 'axios'
+
 const Cart: FC = () => {
+  const [imageSrc, setImageSrc] = useState<string>('') // Rasmni yuklash uchun holat
+
+  useEffect(() => {
+    // Rasm URL
+    const imageUrl = 'https://example.com/path-to-image.jpg'
+
+    // Axios orqali rasmni olish
+    axios
+      .get(imageUrl, { responseType: 'blob' }) // Blob formatida olish
+      .then(response => {
+        // Rasmni ko‘rsatish uchun blobni URL yaratish
+        const imageBlobUrl = URL.createObjectURL(response.data)
+        setImageSrc(imageBlobUrl)
+      })
+      .catch(error => {
+        console.error('Rasm yuklashda xato:', error)
+      })
+
+    // Tozalanadigan efekt
+    return () => {
+      if (imageSrc) {
+        URL.revokeObjectURL(imageSrc) // Xotirani tozalash
+      }
+    }
+  }, [])
+
   return (
     <div className='w-[1150px] mx-auto'>
       <div className='mt-16'>
@@ -11,15 +38,19 @@ const Cart: FC = () => {
         </div>
         <div className='flex justify-between'>
           <div>
-            <img
-              src={headImage}
-              alt='images'
-              className='w-[120px] rounded-xl'
-            />
+            {imageSrc ? (
+              <img
+                src={imageSrc}
+                alt='Product'
+                className='w-[120px] rounded-xl'
+              />
+            ) : (
+              <p>Rasm yuklanmoqda...</p>
+            )}
           </div>
           <div>
             <h2 className='font-medium text-md mb-2'>chair char</h2>
-            <h4 className='text-gray-300 font-medium mb-2'>compamy name</h4>
+            <h4 className='text-gray-300 font-medium mb-2'>company name</h4>
             <p>Color:</p>
           </div>
           <div className='flex flex-col'>

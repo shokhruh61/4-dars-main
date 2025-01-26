@@ -1,15 +1,9 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
     return (
         <div>
-            <div className='bg-slate-900 text-white text-md gap-5 text-opacity-60	 py-2 flex justify-end  pr-[200px]'>
-                <Link to="/signin" className="hover:underline">
-                    Sign in/Guest
-                </Link>
 
-                <Link to={'/signup'} className='hover:underline'>Create Accout</Link>
-            </div>
             <header className="bg-blue-100">
                 <div className="w-[1200px] mx-auto px-5 py-3 flex items-center justify-between">
                     <div>
